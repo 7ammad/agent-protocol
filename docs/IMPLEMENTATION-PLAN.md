@@ -101,12 +101,16 @@ Dashboard needs manual testing with a running daemon to verify the 13-item check
 
 ## Phase 3+: Future Work — ❌ NOT STARTED
 
+**Phase 3 Review (2026-02-20):** QC score 60/100 — not ready for implementation. Blockers: P3/P4/P6 lack specs; P5 has partial scaffolding (init writes config, daemon/CLI do not load it). See review findings below.
+
 | Priority | Item | Status | Spec Exists? |
 |----------|------|--------|-------------|
 | P3 | Cursor VS Code Extension Skeleton | ❌ Not started | No spec |
 | P4 | Codex Adapter | ❌ Not started | No spec — needs Codex context injection research |
-| P5 | Config File Support (`.agent-protocol/config.json`) | ❌ Not started | Schema in `research/10-protocol-spec-v0.1.md` §11 |
+| P5 | Config File Support (`.agent-protocol/config.json`) | 🔶 Partial | Schema in types.ts; init writes config; daemon/CLI do NOT load it |
 | P6 | Conflict Resolution UI | ❌ Not started | No spec |
+
+**Recommended order:** Fix doc table (F5) → P5 (config load) → P3 or P6 → P4 (blocked on research).
 
 ---
 
@@ -135,8 +139,8 @@ Dashboard needs manual testing with a running daemon to verify the 13-item check
 |----------|----------|--------|
 | PRD | `docs/PRD-001-agent-protocol.md` | ✅ Synced with root `docs/` copy |
 | API Contracts | `docs/API-CONTRACTS.md` | ✅ 21 endpoints documented |
-| Integration Test Spec | `docs/PHASE1-INTEGRATION-TEST-SPEC.md` | ✅ 4 scenarios defined — code not yet built |
-| Dashboard Spec | `docs/PHASE2-DASHBOARD-SPEC.md` | ✅ Full spec — code not yet built |
+| Integration Test Spec | `docs/PHASE1-INTEGRATION-TEST-SPEC.md` | ✅ 4 scenarios defined — implemented in `tests/integration.test.ts` |
+| Dashboard Spec | `docs/PHASE2-DASHBOARD-SPEC.md` | ✅ Full spec — implemented in `dashboard/` |
 | Design Tokens | `docs/DESIGN-TOKENS.md` | ✅ Liquid Glass integration spec |
 | File Structure Plan | `docs/FILE-STRUCTURE-PLAN.md` | ✅ Phase 1 + 2 file plan |
 | Live Test Guide | `docs/LIVE-TEST-GUIDE.md` | ✅ Manual test procedure |

@@ -5,10 +5,18 @@
  *
  * Workflow:
  * 1) Run comprehensive review (official docs + best practices + issue context).
- * 2) Apply fixes from findings.
+ * 2) Apply fixes from findings — use /fix protocol for each finding.
  * 3) Run independent QC against review criteria + original issue.
  * 4) Repeat until pass or max iteration limit.
  * 5) Close only when gates pass; otherwise request further fixes with concrete blockers.
+ *
+ * Fix step: When applying fixes, invoke /fix for each finding. Follow /fix's protocol:
+ *   - Identify — Open the relevant file immediately.
+ *   - Fix — Minimal correct fix. No refactor, no improvement, no optimization.
+ *   - Verify — One sentence: what was wrong, what changed.
+ *   - Check blast radius — Same bug elsewhere? List locations.
+ *   - Done — If same bug exists elsewhere, fix those too. Otherwise move on.
+ *   Rules: Speed over perfection. Minimal changes only. Fix the bug, not the architecture.
  */
 
 type Severity = "critical" | "high" | "medium" | "low";
@@ -143,7 +151,9 @@ async function phaseReview(
             reviewHistory.push(reviewSummary);
             await safeAnnotate(issueId, `Review iteration ${iteration}: ${reviewSummary.summary}`);
 
+            // Apply fixes using /fix protocol: Identify → Fix → Verify → Blast radius → Done
             const fixResult: FixResult = await fixIssue(issueId, reviewSummary, {
+                useFixCommand: true,  // Delegate to /fix for each finding
                 enforceTests: true,
                 preserveBehavior: true
             });
@@ -212,7 +222,7 @@ async function phaseReview(
 Helper functions expected in your command runtime:
 - codeReviewer({ issueId, codeContext, officialDocs, industryBestPractices, comprehensive, includeSeverity })
 - annotateReview(issueId, summaryOrNote)
-- fixIssue(issueId, reviewSummary, options)
+- fixIssue(issueId, reviewSummary, options) — uses /fix for each finding: Identify → Fix → Verify → Blast radius → Done. Minimal changes, speed over perfection.
 - qualityControlAgent({ issueId, fixResult, originalReview, codeContext, checkAgainst, requireEvidence })
 - closeIssue(issueId, summary)
 - requestFurtherFixes(issueId, issues)
