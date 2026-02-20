@@ -107,9 +107,14 @@ export class Daemon {
   }
 }
 
-// Direct execution — only when run as main entry point (not when imported by tests)
-const isDirectExecution = process.argv[1]?.endsWith('index.ts') || process.argv[1]?.endsWith('index.js');
-if (isDirectExecution && !process.argv[1]?.includes('vitest') && !process.argv[1]?.includes('node_modules')) {
+// Direct execution — only when run as main entry point (not when imported by CLI or tests)
+const entryFile = process.argv[1]?.replace(/\\/g, '/') ?? '';
+const isDirectExecution =
+  (entryFile.endsWith('/src/index.ts') || entryFile.endsWith('/dist/index.js')) &&
+  !entryFile.includes('/cli/') &&
+  !entryFile.includes('vitest') &&
+  !entryFile.includes('node_modules');
+if (isDirectExecution) {
   const daemon = new Daemon({
     projectRoot: process.cwd(),
     config: { project: process.cwd().split('/').pop() ?? 'unnamed' },
