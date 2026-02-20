@@ -1,0 +1,271 @@
+/* ============================================================
+   LIQUID GLASS — Typography Tokens
+   Type scale inspired by: Apple SF Pro, Inter, Linear
+   Font source: design-vault/fonts/sans-serif/inter/
+   ============================================================ */
+
+/* ── Font Imports ── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* ── Font Families ── */
+  --lg-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --lg-font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --lg-font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+
+  /* ── Font Weights ── */
+  --lg-weight-light: 300;
+  --lg-weight-regular: 400;
+  --lg-weight-medium: 500;
+  --lg-weight-semibold: 600;
+  --lg-weight-bold: 700;
+  --lg-weight-extrabold: 800;
+  --lg-weight-black: 900;
+
+  /* ── Type Scale (based on 1.250 major third) ── */
+  --lg-text-xs: 0.75rem;
+  /* 12px */
+  --lg-text-sm: 0.875rem;
+  /* 14px */
+  --lg-text-base: 1rem;
+  /* 16px */
+  --lg-text-lg: 1.125rem;
+  /* 18px */
+  --lg-text-xl: 1.25rem;
+  /* 20px */
+  --lg-text-2xl: 1.5rem;
+  /* 24px */
+  --lg-text-3xl: 1.875rem;
+  /* 30px */
+  --lg-text-4xl: 2.25rem;
+  /* 36px */
+  --lg-text-5xl: 3rem;
+  /* 48px */
+  --lg-text-6xl: 3.75rem;
+  /* 60px */
+  --lg-text-7xl: 4.5rem;
+  /* 72px */
+  --lg-text-8xl: 6rem;
+  /* 96px */
+
+  /* ── Line Heights ── */
+  --lg-leading-none: 1;
+  --lg-leading-tight: 1.15;
+  --lg-leading-snug: 1.3;
+  --lg-leading-normal: 1.5;
+  --lg-leading-relaxed: 1.625;
+  --lg-leading-loose: 2;
+
+  /* ── Letter Spacing ── */
+  --lg-tracking-tighter: -0.04em;
+  --lg-tracking-tight: -0.02em;
+  --lg-tracking-normal: 0em;
+  --lg-tracking-wide: 0.02em;
+  --lg-tracking-wider: 0.04em;
+  --lg-tracking-widest: 0.08em;
+}
+
+/* ── Display Headings ── */
+.lg-display-1 {
+  font-family: var(--lg-font-display);
+  font-size: var(--lg-text-8xl);
+  font-weight: var(--lg-weight-black);
+  line-height: var(--lg-leading-none);
+  letter-spacing: var(--lg-tracking-tighter);
+}
+
+.lg-display-2 {
+  font-family: var(--lg-font-display);
+  font-size: var(--lg-text-7xl);
+  font-weight: var(--lg-weight-extrabold);
+  line-height: var(--lg-leading-none);
+  letter-spacing: var(--lg-tracking-tighter);
+}
+
+.lg-display-3 {
+  font-family: var(--lg-font-display);
+  font-size: var(--lg-text-6xl);
+  font-weight: var(--lg-weight-bold);
+  line-height: var(--lg-leading-tight);
+  letter-spacing: var(--lg-tracking-tighter);
+}
+
+/* ── Heading Scale ── */
+.lg-h1 {
+  font-family: var(--lg-font-sans);
+  font-size: var(--lg-text-5xl);
+  font-weight: var(--lg-weight-bold);
+  line-height: var(--lg-leading-tight);
+  letter-spacing: var(--lg-tracking-tight);
+}
+
+.lg-h2 {
+  font-family: var(--lg-font-sans);
+  font-size: var(--lg-text-4xl);
+  font-weight: var(--lg-weight-bold);
+  line-height: var(--lg-leading-tight);
+  letter-spacing: var(--lg-tracking-tight);
+}
+
+.lg-h3 {
+  font-family: var(--lg-font-sans);
+  font-size: var(--lg-text-3xl);
+  font-weight: var(--lg-weight-semibold);
+  line-height: var(--lg-leading-snug);
+  letter-spacing: var(--lg-tracking-tight);
+}
+
+.lg-h4 {
+  font-family: var(--lg-font-sans);
+  font-size: var(--lg-text-2xl);
+  font-weight: var(--lg-weight-semibold);
+  line-height: var(--lg-leading-snug);
+  letter-spacing: var(--lg-tracking-normal);
+}
+
+.lg-h5 {
+  font-family: var(--lg-font-sans);
+  font-size: var(--lg-text-xl);
+  font-weight: var(--lg-weight-semibold);
+  line-height: var(--lg-leading-snug);
+  letter-spacing: var(--lg-tracking-normal);
+}
+
+.lg-h6 {
+  font-family: var(--lg-font-sans);
+  font-size: var(--lg-text-lg);
+  font-weight: var(--lg-weight-semibold);
+  line-height: var(--lg-leading-normal);
+  letter-spacing: var(--lg-tracking-normal);
+}
+
+/* ── Body Text ── */
+.lg-body-lg {
+  font-size: var(--lg-text-lg);
+  line-height: var(--lg-leading-relaxed);
+}
+
+.lg-body {
+  font-size: var(--lg-text-base);
+  line-height: var(--lg-leading-normal);
+}
+
+.lg-body-sm {
+  font-size: var(--lg-text-sm);
+  line-height: var(--lg-leading-normal);
+}
+
+.lg-body-xs {
+  font-size: var(--lg-text-xs);
+  line-height: var(--lg-leading-normal);
+}
+
+/* ── Labels ── */
+.lg-label-lg {
+  font-size: var(--lg-text-sm);
+  font-weight: var(--lg-weight-semibold);
+  letter-spacing: var(--lg-tracking-wide);
+}
+
+.lg-label {
+  font-size: var(--lg-text-xs);
+  font-weight: var(--lg-weight-semibold);
+  letter-spacing: var(--lg-tracking-wide);
+}
+
+.lg-label-sm {
+  font-size: 0.6875rem;
+  font-weight: var(--lg-weight-semibold);
+  letter-spacing: var(--lg-tracking-wider);
+  text-transform: uppercase;
+}
+
+/* ── Caption & Overline ── */
+.lg-caption {
+  font-size: var(--lg-text-xs);
+  color: var(--lg-text-muted);
+  line-height: var(--lg-leading-normal);
+}
+
+.lg-overline {
+  font-size: var(--lg-text-xs);
+  font-weight: var(--lg-weight-semibold);
+  letter-spacing: var(--lg-tracking-widest);
+  text-transform: uppercase;
+  color: var(--lg-text-secondary);
+}
+
+/* ── Code ── */
+.lg-code {
+  font-family: var(--lg-font-mono);
+  font-size: 0.9em;
+}
+
+.lg-code-sm {
+  font-family: var(--lg-font-mono);
+  font-size: 0.8em;
+}
+
+/* ── Gradient Text ── */
+.lg-text-gradient {
+  background: var(--lg-gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.lg-text-gradient-warm {
+  background: var(--lg-gradient-warm);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Truncation ── */
+.lg-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lg-line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.lg-line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── Responsive Type ── */
+@media (max-width: 768px) {
+  .lg-display-1 {
+    font-size: var(--lg-text-6xl);
+  }
+
+  .lg-display-2 {
+    font-size: var(--lg-text-5xl);
+  }
+
+  .lg-display-3 {
+    font-size: var(--lg-text-4xl);
+  }
+
+  .lg-h1 {
+    font-size: var(--lg-text-4xl);
+  }
+
+  .lg-h2 {
+    font-size: var(--lg-text-3xl);
+  }
+
+  .lg-h3 {
+    font-size: var(--lg-text-2xl);
+  }
+}

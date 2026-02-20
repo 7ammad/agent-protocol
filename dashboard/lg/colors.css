@@ -1,0 +1,141 @@
+/* ============================================================
+   LIQUID GLASS — Color Tokens
+   Full color system with glass palette + LCH theming
+   Inspired by: Linear (LCH color), Radix Colors, Apple HIG
+   ============================================================ */
+
+:root {
+  /* ── Neutral Scale (12 steps, Radix-style) ── */
+  --lg-gray-1: #fcfcfd;
+  --lg-gray-2: #f9f9fb;
+  --lg-gray-3: #f0f0f3;
+  --lg-gray-4: #e8e8ec;
+  --lg-gray-5: #e0e0e5;
+  --lg-gray-6: #d8d8df;
+  --lg-gray-7: #cdced6;
+  --lg-gray-8: #b9bbc6;
+  --lg-gray-9: #8b8d98;
+  --lg-gray-10: #80828d;
+  --lg-gray-11: #62636c;
+  --lg-gray-12: #1e1f24;
+
+  /* ── Primary (Blue — iOS-inspired) ── */
+  --lg-primary-1: #f0f4ff;
+  --lg-primary-2: #e0eaff;
+  --lg-primary-3: #c7d7fe;
+  --lg-primary-4: #a4bcfd;
+  --lg-primary-5: #819dfc;
+  --lg-primary-6: #6381f8;
+  --lg-primary-7: #4f6af3;
+  --lg-primary-8: #3d56e0;
+  --lg-primary-9: #3b5bdb;
+  --lg-primary-10: #364fc7;
+  --lg-primary-11: #2f44ad;
+  --lg-primary-12: #1c2d6e;
+
+  /* ── Accent (Violet) ── */
+  --lg-accent-1: #f5f2ff;
+  --lg-accent-2: #ede5ff;
+  --lg-accent-3: #ddd1fe;
+  --lg-accent-4: #c9b8fc;
+  --lg-accent-5: #b49ef9;
+  --lg-accent-6: #9d84f3;
+  --lg-accent-7: #8b6cea;
+  --lg-accent-8: #7c5cdb;
+  --lg-accent-9: #7048d5;
+  --lg-accent-10: #6340c3;
+  --lg-accent-11: #533dad;
+  --lg-accent-12: #2e1f6e;
+
+  /* ── Success (Green) ── */
+  --lg-success-1: #edfcf2;
+  --lg-success-2: #d3f9e0;
+  --lg-success-3: #aaf0c4;
+  --lg-success-4: #72e2a3;
+  --lg-success-5: #38cd7c;
+  --lg-success-6: #16b364;
+  --lg-success-7: #099250;
+  --lg-success-8: #087443;
+  --lg-success-9: #067a46;
+  --lg-success-10: #05603a;
+  --lg-success-11: #054f31;
+  --lg-success-12: #053321;
+
+  /* ── Warning (Amber) ── */
+  --lg-warning-1: #fffcf0;
+  --lg-warning-2: #fff8db;
+  --lg-warning-3: #fef0b5;
+  --lg-warning-4: #fce583;
+  --lg-warning-5: #f7d554;
+  --lg-warning-6: #ebc234;
+  --lg-warning-7: #d4a821;
+  --lg-warning-8: #b58c14;
+  --lg-warning-9: #ca8a04;
+  --lg-warning-10: #a16207;
+  --lg-warning-11: #854d0e;
+  --lg-warning-12: #422006;
+
+  /* ── Danger (Red) ── */
+  --lg-danger-1: #fff1f0;
+  --lg-danger-2: #ffe0de;
+  --lg-danger-3: #ffc9c6;
+  --lg-danger-4: #fea8a3;
+  --lg-danger-5: #fb8078;
+  --lg-danger-6: #f25f54;
+  --lg-danger-7: #e04439;
+  --lg-danger-8: #c83a30;
+  --lg-danger-9: #dc2626;
+  --lg-danger-10: #b91c1c;
+  --lg-danger-11: #991b1b;
+  --lg-danger-12: #450a0a;
+
+  /* ── Info (Cyan) ── */
+  --lg-info-1: #f0fafe;
+  --lg-info-2: #dff3fd;
+  --lg-info-3: #c3e8fb;
+  --lg-info-4: #9ed8f7;
+  --lg-info-5: #6ec4f0;
+  --lg-info-6: #44ace5;
+  --lg-info-7: #2b94d4;
+  --lg-info-8: #1f7dbb;
+  --lg-info-9: #0ea5e9;
+  --lg-info-10: #0284c7;
+  --lg-info-11: #026da3;
+  --lg-info-12: #0c4a6e;
+
+  /* ── Glass Surface Colors ── */
+  --lg-glass-bg: rgba(255, 255, 255, 0.45);
+  --lg-glass-bg-hover: rgba(255, 255, 255, 0.55);
+  --lg-glass-bg-active: rgba(255, 255, 255, 0.65);
+  --lg-glass-border: rgba(255, 255, 255, 0.35);
+  --lg-glass-border-subtle: rgba(255, 255, 255, 0.18);
+  --lg-glass-highlight: rgba(255, 255, 255, 0.9);
+  --lg-glass-shadow: rgba(0, 0, 0, 0.08);
+  --lg-glass-tint-primary: rgba(59, 91, 219, 0.12);
+  --lg-glass-tint-accent: rgba(112, 72, 213, 0.12);
+  --lg-glass-tint-warm: rgba(235, 87, 87, 0.06);
+  --lg-glass-tint-cool: rgba(59, 130, 246, 0.06);
+  --lg-glass-refraction: rgba(255, 255, 255, 0.5);
+
+  /* ── Semantic Colors ── */
+  --lg-bg: var(--lg-gray-1);
+  --lg-bg-subtle: var(--lg-gray-2);
+  --lg-bg-muted: var(--lg-gray-3);
+  --lg-text: var(--lg-gray-12);
+  --lg-text-secondary: var(--lg-gray-11);
+  --lg-text-muted: var(--lg-gray-9);
+  --lg-text-placeholder: var(--lg-gray-8);
+  --lg-border: var(--lg-gray-6);
+  --lg-border-subtle: var(--lg-gray-4);
+  --lg-ring: var(--lg-primary-7);
+  --lg-overlay: rgba(0, 0, 0, 0.4);
+
+  /* ── Gradient Presets ── */
+  --lg-gradient-primary: linear-gradient(135deg, var(--lg-primary-7), var(--lg-accent-7));
+  --lg-gradient-warm: linear-gradient(135deg, #ff6b6b, #ffa36b);
+  --lg-gradient-cool: linear-gradient(135deg, #667eea, #764ba2);
+  --lg-gradient-aurora: linear-gradient(135deg, #a8edea, #fed6e3, #d9a7c7);
+  --lg-gradient-mesh: linear-gradient(135deg, #f093fb, #f5576c, #4facfe, #00f2fe);
+  --lg-gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1));
+  --lg-gradient-shine: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.5) 45%, rgba(255, 255, 255, 0.5) 55%, transparent 60%);
+}

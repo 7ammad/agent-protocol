@@ -1,0 +1,72 @@
+/* ============================================================
+   LIQUID GLASS — Elevation Tokens
+   Shadows, blur, z-index, border-radius
+   Inspired by: Apple HIG depth, Material Design elevation
+   ============================================================ */
+
+:root {
+  /* ── Box Shadows (6 levels) ── */
+  --lg-shadow-none: none;
+  --lg-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --lg-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --lg-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --lg-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+  --lg-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  --lg-shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+
+  /* ── Glass Shadows ── */
+  --lg-shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  --lg-shadow-glass-hover: 0 12px 40px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  --lg-shadow-glass-lg: 0 16px 48px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  --lg-shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+  --lg-shadow-inner-glass: inset 0 1px 2px rgba(0, 0, 0, 0.04), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+
+  /* ── Colored Shadows ── */
+  --lg-shadow-primary: 0 8px 24px rgba(59, 91, 219, 0.25);
+  --lg-shadow-accent: 0 8px 24px rgba(112, 72, 213, 0.25);
+  --lg-shadow-success: 0 8px 24px rgba(22, 179, 100, 0.25);
+  --lg-shadow-danger: 0 8px 24px rgba(220, 38, 38, 0.25);
+
+  /* ── Backdrop Blur (Glass effect) ── */
+  --lg-blur-none: blur(0);
+  --lg-blur-xs: blur(2px);
+  --lg-blur-sm: blur(4px);
+  --lg-blur-md: blur(8px);
+  --lg-blur-lg: blur(16px);
+  --lg-blur-xl: blur(24px);
+  --lg-blur-2xl: blur(40px);
+  --lg-blur-3xl: blur(64px);
+
+  /* ── Border Radius ── */
+  --lg-radius-none: 0;
+  --lg-radius-xs: 0.125rem;
+  /* 2px  */
+  --lg-radius-sm: 0.25rem;
+  /* 4px  */
+  --lg-radius-md: 0.5rem;
+  /* 8px  */
+  --lg-radius-lg: 0.75rem;
+  /* 12px */
+  --lg-radius-xl: 1rem;
+  /* 16px */
+  --lg-radius-2xl: 1.25rem;
+  /* 20px */
+  --lg-radius-3xl: 1.5rem;
+  /* 24px */
+  --lg-radius-4xl: 2rem;
+  /* 32px */
+  --lg-radius-full: 9999px;
+
+  /* ── Z-Index Scale (10 layers) ── */
+  --lg-z-base: 0;
+  --lg-z-docked: 10;
+  --lg-z-dropdown: 1000;
+  --lg-z-sticky: 1100;
+  --lg-z-banner: 1200;
+  --lg-z-overlay: 1300;
+  --lg-z-modal: 1400;
+  --lg-z-popover: 1500;
+  --lg-z-tooltip: 1600;
+  --lg-z-toast: 1700;
+  --lg-z-max: 9999;
+}

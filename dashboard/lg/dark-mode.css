@@ -1,0 +1,138 @@
+/* ============================================================
+   LIQUID GLASS — Dark Mode
+   Full dark theme via [data-theme="dark"] or prefers-color-scheme
+   ============================================================ */
+
+[data-theme="dark"],
+.lg-dark {
+  /* ── Neutral Scale (inverted) ── */
+  --lg-gray-1: #111113;
+  --lg-gray-2: #18191b;
+  --lg-gray-3: #212225;
+  --lg-gray-4: #272a2d;
+  --lg-gray-5: #2e3135;
+  --lg-gray-6: #363a3f;
+  --lg-gray-7: #43484e;
+  --lg-gray-8: #5a6169;
+  --lg-gray-9: #696e77;
+  --lg-gray-10: #7c8189;
+  --lg-gray-11: #adb1b8;
+  --lg-gray-12: #edeef0;
+
+  /* ── Primary (Blue — brighter for dark) ── */
+  --lg-primary-1: #0d1b3a;
+  --lg-primary-2: #0f2352;
+  --lg-primary-3: #132d6b;
+  --lg-primary-4: #1a3c87;
+  --lg-primary-5: #234ea3;
+  --lg-primary-6: #2e63be;
+  --lg-primary-7: #3d7bd9;
+  --lg-primary-8: #5090e8;
+  --lg-primary-9: #5b9cf0;
+  --lg-primary-10: #6ba8f5;
+  --lg-primary-11: #93c5fd;
+  --lg-primary-12: #dbeafe;
+
+  /* ── Accent (Violet) ── */
+  --lg-accent-1: #1a0f33;
+  --lg-accent-2: #24154a;
+  --lg-accent-3: #2f1d64;
+  --lg-accent-4: #3c287e;
+  --lg-accent-5: #4c3699;
+  --lg-accent-6: #5e47b3;
+  --lg-accent-7: #735bc9;
+  --lg-accent-8: #8a72da;
+  --lg-accent-9: #9d88e5;
+  --lg-accent-10: #b0a0ed;
+  --lg-accent-11: #c9bff5;
+  --lg-accent-12: #ede5ff;
+
+  /* ── Success ── */
+  --lg-success-9: #34d399;
+  --lg-success-11: #86efac;
+  --lg-success-12: #d1fae5;
+
+  /* ── Warning ── */
+  --lg-warning-9: #fbbf24;
+  --lg-warning-11: #fde68a;
+  --lg-warning-12: #fef3c7;
+
+  /* ── Danger ── */
+  --lg-danger-9: #f87171;
+  --lg-danger-11: #fca5a5;
+  --lg-danger-12: #fee2e2;
+
+  /* ── Glass Surface Colors (Dark) ── */
+  --lg-glass-bg: rgba(255, 255, 255, 0.06);
+  --lg-glass-bg-hover: rgba(255, 255, 255, 0.1);
+  --lg-glass-bg-active: rgba(255, 255, 255, 0.14);
+  --lg-glass-border: rgba(255, 255, 255, 0.12);
+  --lg-glass-border-subtle: rgba(255, 255, 255, 0.06);
+  --lg-glass-highlight: rgba(255, 255, 255, 0.15);
+  --lg-glass-shadow: rgba(0, 0, 0, 0.4);
+  --lg-glass-tint-primary: rgba(93, 156, 240, 0.08);
+  --lg-glass-tint-accent: rgba(157, 136, 229, 0.08);
+  --lg-glass-refraction: rgba(255, 255, 255, 0.08);
+
+  /* ── Semantic Colors (Dark) ── */
+  --lg-bg: var(--lg-gray-1);
+  --lg-bg-subtle: var(--lg-gray-2);
+  --lg-bg-muted: var(--lg-gray-3);
+  --lg-text: var(--lg-gray-12);
+  --lg-text-secondary: var(--lg-gray-11);
+  --lg-text-muted: var(--lg-gray-9);
+  --lg-text-placeholder: var(--lg-gray-8);
+  --lg-border: var(--lg-gray-6);
+  --lg-border-subtle: var(--lg-gray-4);
+  --lg-ring: var(--lg-primary-8);
+  --lg-overlay: rgba(0, 0, 0, 0.7);
+
+  /* ── Shadow Overrides (Dark) ── */
+  --lg-shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --lg-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.2);
+  --lg-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+  --lg-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.35), 0 4px 6px -4px rgba(0, 0, 0, 0.2);
+  --lg-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.25);
+  --lg-shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  --lg-shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --lg-shadow-glass-hover: 0 12px 40px rgba(0, 0, 0, 0.35), 0 2px 4px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --lg-shadow-glass-lg: 0 16px 48px rgba(0, 0, 0, 0.4), 0 4px 8px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+  color-scheme: dark;
+}
+
+/* ── Auto Dark Mode (prefers-color-scheme) ── */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --lg-gray-1: #111113;
+    --lg-gray-2: #18191b;
+    --lg-gray-3: #212225;
+    --lg-gray-4: #272a2d;
+    --lg-gray-5: #2e3135;
+    --lg-gray-6: #363a3f;
+    --lg-gray-7: #43484e;
+    --lg-gray-8: #5a6169;
+    --lg-gray-9: #696e77;
+    --lg-gray-10: #7c8189;
+    --lg-gray-11: #adb1b8;
+    --lg-gray-12: #edeef0;
+
+    --lg-glass-bg: rgba(255, 255, 255, 0.06);
+    --lg-glass-bg-hover: rgba(255, 255, 255, 0.1);
+    --lg-glass-bg-active: rgba(255, 255, 255, 0.14);
+    --lg-glass-border: rgba(255, 255, 255, 0.12);
+    --lg-glass-border-subtle: rgba(255, 255, 255, 0.06);
+    --lg-glass-highlight: rgba(255, 255, 255, 0.15);
+    --lg-glass-shadow: rgba(0, 0, 0, 0.4);
+
+    --lg-bg: var(--lg-gray-1);
+    --lg-bg-subtle: var(--lg-gray-2);
+    --lg-bg-muted: var(--lg-gray-3);
+    --lg-text: var(--lg-gray-12);
+    --lg-text-secondary: var(--lg-gray-11);
+    --lg-text-muted: var(--lg-gray-9);
+    --lg-overlay: rgba(0, 0, 0, 0.7);
+
+    color-scheme: dark;
+  }
+}

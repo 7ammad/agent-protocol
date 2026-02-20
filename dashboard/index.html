@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" class="lg-dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Protocol — Dashboard</title>
+
+  <!-- Liquid Glass Foundation -->
+  <link rel="stylesheet" href="lg/colors.css">
+  <link rel="stylesheet" href="lg/typography.css">
+  <link rel="stylesheet" href="lg/elevation.css">
+  <link rel="stylesheet" href="lg/motion.css">
+  <link rel="stylesheet" href="lg/materials.css">
+  <link rel="stylesheet" href="lg/dark-mode.css">
+
+  <!-- Dashboard styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header id="app-header" class="lg-glass-thick lg-specular" role="banner">
+    <h1>Agent Protocol</h1>
+    <div class="header-status">
+      <span class="health-dot" id="health-dot" aria-label="Daemon status: online" role="status"></span>
+      <span class="event-count" id="event-count">0 events</span>
+    </div>
+  </header>
+
+  <main id="app-main" role="main">
+    <section id="agent-cards" class="dashboard-section">
+      <h2 class="section-header">Agents</h2>
+      <div id="agent-cards-content"></div>
+    </section>
+
+    <section id="file-tree" class="dashboard-section">
+      <h2 class="section-header">Files</h2>
+      <div id="file-tree-content"></div>
+    </section>
+
+    <section id="event-timeline" class="dashboard-section lg-glass-thin">
+      <h2 class="section-header">Event Timeline</h2>
+      <div id="event-list-content" class="event-list"></div>
+    </section>
+
+    <section id="task-board" class="dashboard-section">
+      <h2 class="section-header">Tasks</h2>
+      <div id="task-board-content" class="task-board-columns"></div>
+    </section>
+  </main>
+
+  <!-- JS Modules -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>

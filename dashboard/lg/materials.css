@@ -1,0 +1,169 @@
+/* ============================================================
+   LIQUID GLASS — Materials
+   Glass surface primitives: thin, regular, thick, ultra
+   Inspired by: iOS 26 Liquid Glass, Apple HIG materials
+   ============================================================ */
+
+/* ── Base Glass Mixin (via class composition) ── */
+.lg-glass {
+  background: var(--lg-glass-bg);
+  backdrop-filter: var(--lg-blur-lg);
+  -webkit-backdrop-filter: var(--lg-blur-lg);
+  border: 1px solid var(--lg-glass-border);
+  box-shadow: var(--lg-shadow-glass);
+  border-radius: var(--lg-radius-xl);
+}
+
+/* ── Thin Glass — Subtle, background panels ── */
+.lg-glass-thin {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: var(--lg-blur-sm);
+  -webkit-backdrop-filter: var(--lg-blur-sm);
+  border: 1px solid var(--lg-glass-border-subtle);
+  box-shadow: var(--lg-shadow-xs);
+  border-radius: var(--lg-radius-lg);
+}
+
+/* ── Regular Glass — Cards, popovers ── */
+.lg-glass-regular {
+  background: var(--lg-glass-bg);
+  backdrop-filter: var(--lg-blur-lg);
+  -webkit-backdrop-filter: var(--lg-blur-lg);
+  border: 1px solid var(--lg-glass-border);
+  box-shadow: var(--lg-shadow-glass);
+  border-radius: var(--lg-radius-xl);
+}
+
+/* ── Thick Glass — Modals, prominent surfaces ── */
+.lg-glass-thick {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: var(--lg-blur-xl);
+  -webkit-backdrop-filter: var(--lg-blur-xl);
+  border: 1px solid var(--lg-glass-border);
+  box-shadow: var(--lg-shadow-glass-lg);
+  border-radius: var(--lg-radius-2xl);
+}
+
+/* ── Ultra Glass — Hero sections, frosted panels ── */
+.lg-glass-ultra {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: var(--lg-blur-2xl);
+  -webkit-backdrop-filter: var(--lg-blur-2xl);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: var(--lg-shadow-xl), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border-radius: var(--lg-radius-3xl);
+}
+
+/* ── Prismatic Glass (rainbow refraction edge) ── */
+.lg-glass-prismatic {
+  background: var(--lg-glass-bg);
+  backdrop-filter: var(--lg-blur-lg);
+  -webkit-backdrop-filter: var(--lg-blur-lg);
+  border: 1px solid transparent;
+  border-image: linear-gradient(135deg,
+      rgba(255, 120, 120, 0.4),
+      rgba(255, 200, 100, 0.4),
+      rgba(120, 255, 120, 0.4),
+      rgba(100, 200, 255, 0.4),
+      rgba(200, 120, 255, 0.4)) 1;
+  box-shadow: var(--lg-shadow-glass),
+    0 0 20px rgba(120, 180, 255, 0.1),
+    0 0 40px rgba(200, 120, 255, 0.05);
+  border-radius: var(--lg-radius-xl);
+}
+
+/* ── Tinted Glass Variants ── */
+.lg-glass-primary {
+  background: linear-gradient(135deg, var(--lg-glass-tint-primary), var(--lg-glass-bg));
+  backdrop-filter: var(--lg-blur-lg);
+  -webkit-backdrop-filter: var(--lg-blur-lg);
+  border: 1px solid rgba(59, 91, 219, 0.15);
+  box-shadow: var(--lg-shadow-glass);
+  border-radius: var(--lg-radius-xl);
+}
+
+.lg-glass-accent {
+  background: linear-gradient(135deg, var(--lg-glass-tint-accent), var(--lg-glass-bg));
+  backdrop-filter: var(--lg-blur-lg);
+  -webkit-backdrop-filter: var(--lg-blur-lg);
+  border: 1px solid rgba(112, 72, 213, 0.15);
+  box-shadow: var(--lg-shadow-glass);
+  border-radius: var(--lg-radius-xl);
+}
+
+/* ── Specular Highlight (inner shine line) ── */
+.lg-specular {
+  position: relative;
+}
+
+.lg-specular::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg,
+      transparent,
+      var(--lg-glass-highlight) 20%,
+      var(--lg-glass-highlight) 80%,
+      transparent);
+  border-radius: var(--lg-radius-full);
+  pointer-events: none;
+}
+
+/* ── Frosted Overlay ── */
+.lg-frosted-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: var(--lg-blur-3xl);
+  -webkit-backdrop-filter: var(--lg-blur-3xl);
+  pointer-events: none;
+}
+
+/* ── Glass Interactive States ── */
+.lg-glass-interactive {
+  background: var(--lg-glass-bg);
+  backdrop-filter: var(--lg-blur-lg);
+  -webkit-backdrop-filter: var(--lg-blur-lg);
+  border: 1px solid var(--lg-glass-border);
+  box-shadow: var(--lg-shadow-glass);
+  border-radius: var(--lg-radius-xl);
+  transition: var(--lg-transition-moderate);
+  cursor: pointer;
+}
+
+.lg-glass-interactive:hover {
+  background: var(--lg-glass-bg-hover);
+  box-shadow: var(--lg-shadow-glass-hover);
+  transform: translateY(-2px);
+}
+
+.lg-glass-interactive:active {
+  background: var(--lg-glass-bg-active);
+  transform: translateY(0);
+  box-shadow: var(--lg-shadow-glass);
+}
+
+/* ── Solid Surfaces (non-glass fallbacks) ── */
+.lg-surface {
+  background: var(--lg-bg);
+  border: 1px solid var(--lg-border-subtle);
+  border-radius: var(--lg-radius-xl);
+  box-shadow: var(--lg-shadow-sm);
+}
+
+.lg-surface-raised {
+  background: white;
+  border: 1px solid var(--lg-border-subtle);
+  border-radius: var(--lg-radius-xl);
+  box-shadow: var(--lg-shadow-md);
+}
+
+.lg-surface-sunken {
+  background: var(--lg-bg-muted);
+  border: 1px solid var(--lg-border-subtle);
+  border-radius: var(--lg-radius-lg);
+  box-shadow: var(--lg-shadow-inner);
+}

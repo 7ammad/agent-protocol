@@ -1,0 +1,87 @@
+/* ============================================================
+   LIQUID GLASS — Motion Tokens
+   Duration, easing, spring, reduced-motion
+   Inspired by: Stripe (Web Animations API), Apple (spring physics)
+   ============================================================ */
+
+:root {
+  /* ── Durations ── */
+  --lg-duration-instant: 50ms;
+  --lg-duration-fast: 100ms;
+  --lg-duration-normal: 200ms;
+  --lg-duration-moderate: 300ms;
+  --lg-duration-slow: 400ms;
+  --lg-duration-slower: 600ms;
+  --lg-duration-slowest: 800ms;
+  --lg-duration-glacial: 1200ms;
+
+  /* ── Easing Curves ── */
+  --lg-ease-linear: linear;
+  --lg-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --lg-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --lg-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ── Spring / Organic Curves ── */
+  --lg-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --lg-ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --lg-ease-elastic: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  --lg-ease-smooth: cubic-bezier(0.23, 1, 0.32, 1);
+  --lg-ease-snappy: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ── Apple-style Spring ── */
+  --lg-ease-apple: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --lg-ease-apple-spring: cubic-bezier(0.37, 0.01, 0, 0.98);
+
+  /* ── Composite Transitions ── */
+  --lg-transition-fast: all var(--lg-duration-fast) var(--lg-ease-out);
+  --lg-transition-normal: all var(--lg-duration-normal) var(--lg-ease-out);
+  --lg-transition-moderate: all var(--lg-duration-moderate) var(--lg-ease-in-out);
+  --lg-transition-slow: all var(--lg-duration-slow) var(--lg-ease-in-out);
+  --lg-transition-spring: all var(--lg-duration-moderate) var(--lg-ease-spring);
+  --lg-transition-bounce: all var(--lg-duration-slow) var(--lg-ease-bounce);
+
+  /* ── Property-Specific Transitions ── */
+  --lg-transition-colors: color var(--lg-duration-normal) var(--lg-ease-out),
+    background-color var(--lg-duration-normal) var(--lg-ease-out),
+    border-color var(--lg-duration-normal) var(--lg-ease-out),
+    box-shadow var(--lg-duration-normal) var(--lg-ease-out);
+
+  --lg-transition-transform: transform var(--lg-duration-moderate) var(--lg-ease-spring);
+
+  --lg-transition-opacity: opacity var(--lg-duration-normal) var(--lg-ease-out);
+
+  --lg-transition-shadow: box-shadow var(--lg-duration-moderate) var(--lg-ease-out);
+
+  /* ── Animation Delays (for stagger effects) ── */
+  --lg-stagger-1: 0ms;
+  --lg-stagger-2: 50ms;
+  --lg-stagger-3: 100ms;
+  --lg-stagger-4: 150ms;
+  --lg-stagger-5: 200ms;
+  --lg-stagger-6: 250ms;
+  --lg-stagger-7: 300ms;
+  --lg-stagger-8: 350ms;
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --lg-duration-instant: 0ms;
+    --lg-duration-fast: 0ms;
+    --lg-duration-normal: 0ms;
+    --lg-duration-moderate: 0ms;
+    --lg-duration-slow: 0ms;
+    --lg-duration-slower: 0ms;
+    --lg-duration-slowest: 0ms;
+    --lg-duration-glacial: 0ms;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
