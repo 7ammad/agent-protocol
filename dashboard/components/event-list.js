@@ -1,3 +1,5 @@
+import { escapeHtml, formatTime } from '../utils/time.js';
+
 const MAX_EVENTS = 100;
 let userScrolled = false;
 let scrollListenerAttached = false;
@@ -32,11 +34,6 @@ function getEventCategory(action) {
   return 'agent';
 }
 
-function formatTime(timestamp) {
-  const d = new Date(timestamp);
-  return d.toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
-}
-
 function renderEventRow(event, animate = false) {
   const mapper = ACTION_MAP[event.action];
   if (!mapper) return '';
@@ -55,20 +52,26 @@ function renderEventRow(event, animate = false) {
 
 export function renderEventList(events) {
   const container = document.getElementById('event-list-content');
+  if (!container) return;
 
-  // Filter out heartbeats
   const filtered = events.filter(e => e.action !== 'agent.heartbeat');
 
   if (filtered.length === 0) {
-    container.innerHTML = '<p class="section-empty">No events yet</p>';
+    container.innerHTML = `
+      <div class="empty-state">
+        <div class="empty-state-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--lg-text-muted)" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <p class="empty-state-title">No events recorded</p>
+        <p class="empty-state-desc">Activity will appear here as agents work.</p>
+      </div>
+    `;
     return;
   }
 
-  // Newest first
   const sorted = [...filtered].sort((a, b) => b.timestamp - a.timestamp).slice(0, MAX_EVENTS);
   container.innerHTML = sorted.map(e => renderEventRow(e, false)).join('');
 
-  // Track user scroll (attach once to avoid listener leak)
   if (!scrollListenerAttached) {
     scrollListenerAttached = true;
     container.addEventListener('scroll', () => {
@@ -81,36 +84,20 @@ export function prependEvent(event) {
   if (event.action === 'agent.heartbeat') return;
 
   const container = document.getElementById('event-list-content');
+  if (!container) return;
 
-  // Remove empty state if present
-  const empty = container.querySelector('.section-empty');
+  const empty = container.querySelector('.empty-state');
   if (empty) empty.remove();
 
   const html = renderEventRow(event, true);
   container.insertAdjacentHTML('afterbegin', html);
 
-  // Trim to max
   const rows = container.querySelectorAll('.event-row');
   if (rows.length > MAX_EVENTS) {
     rows[rows.length - 1].remove();
   }
 
-  // Auto-scroll to top unless user scrolled down
   if (!userScrolled) {
     container.scrollTop = 0;
   }
-
-  // Update event count in header
-  const countEl = document.getElementById('event-count');
-  if (countEl) {
-    const current = parseInt(countEl.textContent) || 0;
-    countEl.textContent = `${current + 1} events`;
-  }
-}
-
-function escapeHtml(text) {
-  if (!text) return '';
-  const div = document.createElement('div');
-  div.textContent = String(text);
-  return div.innerHTML;
 }

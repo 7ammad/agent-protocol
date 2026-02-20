@@ -1,0 +1,13 @@
+src/
+tests/
+scripts/
+docs/
+research/
+.agent-protocol/
+*.ts
+!*.d.ts
+tsconfig.json
+HANDOFF.md
+CLAUDE.md
+.github/
+.integration-test-project/

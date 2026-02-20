@@ -30,7 +30,24 @@
     "typescript": "^5.6.0",
     "vitest": "^2.1.0"
   },
+  "files": [
+    "dist/",
+    "dashboard/",
+    "LICENSE",
+    "README.md"
+  ],
   "engines": { "node": ">=20.0.0" },
   "type": "module",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "keywords": [
+    "ai",
+    "agents",
+    "coordination",
+    "protocol",
+    "claude",
+    "cursor",
+    "codex",
+    "multi-agent"
+  ],
+  "prepublishOnly": "tsc"
 }

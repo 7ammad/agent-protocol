@@ -15,8 +15,9 @@
  */
 
 import { Command } from 'commander';
-import { existsSync, writeFileSync, mkdirSync } from 'node:fs';
+import { existsSync, writeFileSync, readFileSync, appendFileSync, mkdirSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { createServer } from 'node:net';
 import { Daemon } from '../index.js';
 import { DEFAULT_CONFIG, type Agent, type Resource, type Task, type ProtocolEvent } from '../core/types.js';
 
@@ -63,6 +64,16 @@ program
       JSON.stringify(config, null, 2),
     );
 
+    // Add .agent-protocol/ to project .gitignore if it exists
+    const gitignorePath = resolve(cwd, '.gitignore');
+    if (existsSync(gitignorePath)) {
+      const content = readFileSync(gitignorePath, 'utf-8');
+      if (!content.includes('.agent-protocol')) {
+        appendFileSync(gitignorePath, '\n# Agent Protocol\n.agent-protocol/\n');
+        console.log('  Added .agent-protocol/ to .gitignore');
+      }
+    }
+
     console.log(`\n  Initialized agent-protocol in ${protocolDir}`);
     console.log(`  Config: ${resolve(protocolDir, 'config.json')}`);
     console.log(`\n  Next: run 'agent-protocol start' to launch the daemon\n`);
@@ -75,15 +86,33 @@ program
   .description('Start the coordination daemon')
   .option('-p, --port <port>', 'Port to listen on', '4700')
   .action(async (opts) => {
+    const port = parseInt(opts.port);
+
+    // Check if port is already in use
+    const portFree = await new Promise<boolean>((res) => {
+      const srv = createServer();
+      srv.once('error', () => res(false));
+      srv.once('listening', () => { srv.close(); res(true); });
+      srv.listen(port, '127.0.0.1');
+    });
+
+    if (!portFree) {
+      console.log(`\n  Port ${port} is already in use. Is the daemon already running?`);
+      console.log(`  Try: agent-protocol status -p ${port}\n`);
+      process.exit(1);
+    }
+
     const daemon = new Daemon({
       projectRoot: process.cwd(),
       config: {
         project: process.cwd().split(/[/\\]/).pop() ?? 'unnamed',
-        port: parseInt(opts.port),
+        port,
       },
     });
 
     await daemon.start();
+
+    console.log(`\n  Dashboard: http://localhost:${port}/dashboard\n`);
 
     process.on('SIGINT', async () => {
       await daemon.stop();

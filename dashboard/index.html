@@ -17,35 +17,59 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header id="app-header" class="lg-glass-thick lg-specular" role="banner">
-    <h1>Agent Protocol</h1>
-    <div class="header-status">
-      <span class="health-dot" id="health-dot" aria-label="Daemon status: online" role="status"></span>
-      <span class="event-count" id="event-count">0 events</span>
+  <!-- Sidebar Navigation -->
+  <nav id="sidebar" class="sidebar" role="navigation">
+    <div class="sidebar-brand">
+      <h1 class="sidebar-title">Agent Protocol</h1>
+      <div class="sidebar-health">
+        <span class="health-dot" id="health-dot" aria-label="Daemon status: online" role="status"></span>
+        <span class="sidebar-version">v0.1.0</span>
+      </div>
     </div>
-  </header>
+    <ul class="sidebar-nav" id="sidebar-nav">
+      <li><a href="#/" class="sidebar-link active" data-page="overview">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        Overview
+      </a></li>
+      <li><a href="#/agents" class="sidebar-link" data-page="agents">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        Agents
+      </a></li>
+      <li><a href="#/files" class="sidebar-link" data-page="files">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+        Files
+      </a></li>
+      <li><a href="#/tasks" class="sidebar-link" data-page="tasks">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        Tasks
+      </a></li>
+      <li><a href="#/events" class="sidebar-link" data-page="events">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Events
+        <span class="sidebar-badge" id="event-count-badge">0</span>
+      </a></li>
+      <li><a href="#/handoffs" class="sidebar-link" data-page="handoffs">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 10 20 15 15 20"/><path d="M4 4v7a4 4 0 004 4h12"/></svg>
+        Handoffs
+      </a></li>
+    </ul>
+  </nav>
 
+  <!-- Main Content Area -->
   <main id="app-main" role="main">
-    <section id="agent-cards" class="dashboard-section">
-      <h2 class="section-header">Agents</h2>
-      <div id="agent-cards-content"></div>
-    </section>
-
-    <section id="file-tree" class="dashboard-section">
-      <h2 class="section-header">Files</h2>
-      <div id="file-tree-content"></div>
-    </section>
-
-    <section id="event-timeline" class="dashboard-section lg-glass-thin">
-      <h2 class="section-header">Event Timeline</h2>
-      <div id="event-list-content" class="event-list"></div>
-    </section>
-
-    <section id="task-board" class="dashboard-section">
-      <h2 class="section-header">Tasks</h2>
-      <div id="task-board-content" class="task-board-columns"></div>
-    </section>
+    <div id="page-container"></div>
   </main>
+
+  <!-- Modal Overlay -->
+  <div id="modal-overlay" class="modal-overlay hidden" role="dialog" aria-modal="true">
+    <div class="modal-content lg-glass-thick">
+      <div class="modal-header">
+        <h3 id="modal-title"></h3>
+        <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+      </div>
+      <div id="modal-body"></div>
+    </div>
+  </div>
 
   <!-- JS Modules -->
   <script type="module" src="app.js"></script>
